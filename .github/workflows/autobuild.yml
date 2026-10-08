@@ -144,7 +144,7 @@ jobs:
       - name: Configure
         shell: msys2 {0}
         run: |
-          meson setup --prefix "$(pwd)/build/artifact" --buildtype release -Dstrip=true -Db_lto=true build
+          meson setup --prefix "$(pwd)/build/artifact" --buildtype debugoptimized -Dstrip=false -Db_lto=false build
 
       - name: Build
         id: build
@@ -283,7 +283,7 @@ jobs:
           else
             compiler=gcc
           fi
-          meson setup --prefix "$(pwd)/build/artifact" --cross-file windows/meson-$compiler-${{ matrix.arch_mkxpz }}.txt --buildtype release -Dstrip=true -Db_lto=true build
+          meson setup --prefix "$(pwd)/build/artifact" --cross-file windows/meson-$compiler-${{ matrix.arch_mkxpz }}.txt --buildtype debugoptimized -Dstrip=false -Db_lto=false build
 
       - name: Build
         id: build
